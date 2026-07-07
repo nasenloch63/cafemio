@@ -1,6 +1,7 @@
 'use client'
 
 import { useRef, useState } from 'react'
+import Image from 'next/image'
 import { AnimatePresence, motion } from 'framer-motion'
 import { FileText } from 'lucide-react'
 import { cn } from '@/lib/utils'
@@ -76,34 +77,61 @@ export function Menu() {
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -24 }}
               transition={{ duration: 0.3, ease: 'easeOut' }}
-              className="grid gap-5 sm:grid-cols-2"
+              className={cn(
+                'grid gap-5',
+                (current.items as Array<{ image?: string }>).some((it) => it.image)
+                  ? 'sm:grid-cols-2 lg:grid-cols-4'
+                  : 'sm:grid-cols-2',
+              )}
             >
-              {current.items.map((item, i) => (
-                <motion.article
-                  key={item.name}
-                  initial={{ opacity: 0, y: 16 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.4, delay: i * 0.08, ease: 'easeOut' }}
-                  className="group flex flex-col gap-1 rounded-3xl border border-border bg-card/70 p-6 shadow-sm backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
-                >
-                  <div className="flex items-start justify-between gap-4">
-                    <h3 className="flex flex-wrap items-center gap-2 font-serif text-xl font-semibold">
-                      {item.name}
-                      {item.popular && (
-                        <span className="rounded-full bg-strawberry/15 px-2.5 py-0.5 text-xs font-semibold text-strawberry">
-                          {t.menu.popular}
+              {current.items.map((item, i) => {
+                const hasImage = !!(item as { image?: string }).image
+                const imgSrc = (item as { image?: string }).image
+                return (
+                  <motion.article
+                    key={item.name}
+                    initial={{ opacity: 0, y: 16 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.4, delay: i * 0.08, ease: 'easeOut' }}
+                    className="group flex flex-col overflow-hidden rounded-3xl border border-border bg-card/70 shadow-sm backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
+                  >
+                    {hasImage && imgSrc && (
+                      <div className="relative aspect-[4/3] overflow-hidden">
+                        <Image
+                          src={imgSrc}
+                          alt={item.name}
+                          fill
+                          className="object-cover transition-transform duration-500 group-hover:scale-105"
+                          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                        />
+                        {item.popular && (
+                          <span className="absolute left-3 top-3 rounded-full bg-cream/90 px-3 py-1 text-xs font-semibold text-strawberry backdrop-blur">
+                            {t.menu.popular}
+                          </span>
+                        )}
+                      </div>
+                    )}
+                    <div className="flex flex-1 flex-col gap-1 p-6">
+                      <div className="flex items-start justify-between gap-4">
+                        <h3 className={cn('flex flex-wrap items-center gap-2 font-serif font-semibold', hasImage ? 'text-lg' : 'text-xl')}>
+                          {item.name}
+                          {!hasImage && item.popular && (
+                            <span className="rounded-full bg-strawberry/15 px-2.5 py-0.5 text-xs font-semibold text-strawberry">
+                              {t.menu.popular}
+                            </span>
+                          )}
+                        </h3>
+                        <span className={cn('shrink-0 font-serif font-semibold text-primary', hasImage ? 'rounded-full bg-primary/10 px-2.5 py-0.5 text-xs' : 'text-lg')}>
+                          {item.price}
                         </span>
-                      )}
-                    </h3>
-                    <span className="shrink-0 font-serif text-lg font-semibold text-primary">
-                      {item.price}
-                    </span>
-                  </div>
-                  <p className="text-sm leading-relaxed text-muted-foreground text-pretty">
-                    {item.description}
-                  </p>
-                </motion.article>
-              ))}
+                      </div>
+                      <p className="text-sm leading-relaxed text-muted-foreground text-pretty">
+                        {item.description}
+                      </p>
+                    </div>
+                  </motion.article>
+                )
+              })}
             </motion.div>
           </AnimatePresence>
         </div>
