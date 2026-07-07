@@ -46,7 +46,12 @@ export function IceSpecialties() {
                     </span>
                   </div>
                   <div className="p-5">
-                    <h3 className="font-serif text-xl font-semibold">{item.title}</h3>
+                    <div className="flex items-start justify-between gap-3">
+                      <h3 className="font-serif text-xl font-semibold">{item.title}</h3>
+                      <span className="shrink-0 font-serif text-lg font-semibold text-primary">
+                        {item.price}
+                      </span>
+                    </div>
                     <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">{item.text}</p>
                   </div>
                 </article>
