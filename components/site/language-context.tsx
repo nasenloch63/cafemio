@@ -187,6 +187,15 @@ export const translations = {
       call: 'Anrufen',
       mapTitle: 'Karte Eiscafé Mio Hessisch Lichtenau',
     },
+    instagram: {
+      navLabel: 'Folg uns',
+      heroLabel: 'Auf Instagram folgen',
+      galleryBannerHeading: 'Mehr Eis-Momente auf Instagram',
+      galleryBannerSub: 'Schau hinter die Kulissen, entdecke neue Kreationen und sei Teil unserer Community.',
+      galleryBannerCta: '@eis_mio_hessisch_lichtenau',
+      footerLabel: 'Instagram',
+      floatingLabel: 'Auf Instagram folgen',
+    },
     footer: {
       desc: 'Hausgemachtes Eis, herzhaftes Frühstück und ein warmes Café-Ambiente im Herzen von Hessisch Lichtenau.',
       contactTitle: 'Kontakt',
@@ -371,6 +380,15 @@ export const translations = {
       route: 'Get directions',
       call: 'Call us',
       mapTitle: 'Map of Eiscafé Mio Hessisch Lichtenau',
+    },
+    instagram: {
+      navLabel: 'Follow us',
+      heroLabel: 'Follow on Instagram',
+      galleryBannerHeading: 'More ice cream moments on Instagram',
+      galleryBannerSub: 'Go behind the scenes, discover new creations and join our community.',
+      galleryBannerCta: '@eis_mio_hessisch_lichtenau',
+      footerLabel: 'Instagram',
+      floatingLabel: 'Follow on Instagram',
     },
     footer: {
       desc: 'Homemade gelato, hearty breakfasts and a warm café atmosphere in the heart of Hessisch Lichtenau.',

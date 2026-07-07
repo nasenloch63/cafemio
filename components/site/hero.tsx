@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import { MapPin, Clock } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { useLanguage } from '@/components/site/language-context'
+import { InstagramButton } from '@/components/site/instagram-button'
 
 export function Hero() {
   const { t } = useLanguage()
@@ -57,6 +58,7 @@ export function Hero() {
               render={<a href="#besuch">{t.hero.ctaVisit}</a>}
               className="h-12 rounded-full border-white/40 bg-white/10 px-7 text-base text-white backdrop-blur hover:bg-white/20 hover:text-white"
             />
+            <InstagramButton variant="hero" label={t.instagram.heroLabel} />
           </div>
 
           <div className="mt-8 inline-flex items-center gap-2 text-sm font-medium text-white/80">

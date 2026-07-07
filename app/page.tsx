@@ -9,6 +9,7 @@ import { Fingerfood } from '@/components/site/fingerfood'
 import { Gallery } from '@/components/site/gallery'
 import { Visit } from '@/components/site/visit'
 import { Footer } from '@/components/site/footer'
+import { FloatingInstagram } from '@/components/site/floating-instagram'
 
 export default function Page() {
   return (
@@ -25,6 +26,7 @@ export default function Page() {
         <Visit />
         <Footer />
       </main>
+      <FloatingInstagram />
     </LanguageProvider>
   )
 }
