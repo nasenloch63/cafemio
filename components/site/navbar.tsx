@@ -6,6 +6,7 @@ import { Menu, X } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { Button } from '@/components/ui/button'
 import { useLanguage } from '@/components/site/language-context'
+import { InstagramButton } from '@/components/site/instagram-button'
 
 export function Navbar() {
   const { t, lang, toggle } = useLanguage()
@@ -99,6 +100,7 @@ export function Navbar() {
 
         <div className="hidden items-center gap-3 md:flex">
           <LangToggle />
+          <InstagramButton variant="nav" label={t.instagram.navLabel} />
           <Button
             nativeButton={false}
             render={<a href="#besuch">{t.nav.reserve}</a>}

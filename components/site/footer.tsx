@@ -1,8 +1,9 @@
 'use client'
 
 import Image from 'next/image'
-import { MapPin, Clock, Camera } from 'lucide-react'
+import { MapPin, Clock } from 'lucide-react'
 import { useLanguage } from '@/components/site/language-context'
+import { InstagramButton } from '@/components/site/instagram-button'
 
 export function Footer() {
   const { t } = useLanguage()
@@ -59,14 +60,7 @@ export function Footer() {
                 <a href="#galerie" className="transition-colors hover:text-vanilla">{t.footer.linkGallery}</a>
               </li>
               <li>
-                <a
-                  href="https://www.instagram.com/eis_mio_hessisch_lichtenau/"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="inline-flex items-center gap-1.5 transition-colors hover:text-vanilla"
-                >
-                  <Camera className="size-4" /> Instagram
-                </a>
+                <InstagramButton variant="footer" label={t.instagram.footerLabel} />
               </li>
             </ul>
           </div>
